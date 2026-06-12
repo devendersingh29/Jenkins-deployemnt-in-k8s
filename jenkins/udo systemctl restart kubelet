@@ -1,0 +1,22 @@
+[0;1;32m●[0m kubelet.service - kubelet: The Kubernetes Node Agent
+     Loaded: loaded (/lib/systemd/system/kubelet.service; enabled; vendor preset: enabled)
+    Drop-In: /usr/lib/systemd/system/kubelet.service.d
+             └─10-kubeadm.conf
+     Active: [0;1;32mactive (running)[0m since Fri 2026-06-12 11:58:15 IST; 11min ago
+       Docs: https://kubernetes.io/docs/
+   Main PID: 1506 (kubelet)
+      Tasks: 16 (limit: 9148)
+     Memory: 102.5M
+     CGroup: /system.slice/kubelet.service
+             └─1506 /usr/bin/kubelet --bootstrap-kubeconfig=/etc/kubernetes/bootstrap-kubelet.conf --kubeconfig=/etc/kubernetes/kubelet.conf --config=/var/lib/kubelet/config.yaml --container-runtime-endpoint=unix:///var/run/containerd/containerd.sock --pod-infra-container-image=registry.k8s.io/pause:3.9
+
+Jun 12 12:09:22 walkingtree kubelet[1506]: E0612 12:09:22.515702    1506 reflector.go:150] k8s.io/client-go/informers/factory.go:160: Failed to watch *v1.RuntimeClass: failed to list *v1.RuntimeClass: Get "https://192.168.1.91:6443/apis/node.k8s.io/v1/runtimeclasses?limit=500&resourceVersion=0": dial tcp 192.168.1.91:6443: connect: connection refused
+Jun 12 12:09:22 walkingtree kubelet[1506]: I0612 12:09:22.582258    1506 scope.go:117] "RemoveContainer" containerID="46a596bc4e6722db9c50ca86e4295c1151504274c011baf01cfc6cc56371dc87"
+Jun 12 12:09:22 walkingtree kubelet[1506]: E0612 12:09:22.583036    1506 pod_workers.go:1298] "Error syncing pod, skipping" err="failed to \"StartContainer\" for \"kube-apiserver\" with CrashLoopBackOff: \"back-off 5m0s restarting failed container=kube-apiserver pod=kube-apiserver-walkingtree_kube-system(9c7ef98340c1d19ca7cb0f95b77a3951)\"" pod="kube-system/kube-apiserver-walkingtree" podUID="9c7ef98340c1d19ca7cb0f95b77a3951"
+Jun 12 12:09:25 walkingtree kubelet[1506]: E0612 12:09:25.521703    1506 eviction_manager.go:282] "Eviction manager: failed to get summary stats" err="failed to get node info: node \"walkingtree\" not found"
+Jun 12 12:09:28 walkingtree kubelet[1506]: E0612 12:09:28.094704    1506 controller.go:145] "Failed to ensure lease exists, will retry" err="Get \"https://192.168.1.91:6443/apis/coordination.k8s.io/v1/namespaces/kube-node-lease/leases/walkingtree?timeout=10s\": dial tcp 192.168.1.91:6443: connect: connection refused" interval="7s"
+Jun 12 12:09:28 walkingtree kubelet[1506]: E0612 12:09:28.564137    1506 event.go:368] "Unable to write event (may retry after sleeping)" err="Post \"https://192.168.1.91:6443/api/v1/namespaces/default/events\": dial tcp 192.168.1.91:6443: connect: connection refused" event="&Event{ObjectMeta:{walkingtree.18b84185c6f0182e  default    0 0001-01-01 00:00:00 +0000 UTC <nil> <nil> map[] map[] [] [] []},InvolvedObject:ObjectReference{Kind:Node,Namespace:,Name:walkingtree,UID:walkingtree,APIVersion:,ResourceVersion:,FieldPath:,},Reason:NodeHasSufficientMemory,Message:Node walkingtree status is now: NodeHasSufficientMemory,Source:EventSource{Component:kubelet,Host:walkingtree,},FirstTimestamp:2026-06-12 11:58:15.449110574 +0530 IST m=+0.235622485,LastTimestamp:2026-06-12 11:58:15.449110574 +0530 IST m=+0.235622485,Count:1,Type:Normal,EventTime:0001-01-01 00:00:00 +0000 UTC,Series:nil,Action:,Related:nil,ReportingController:kubelet,ReportingInstance:walkingtree,}"
+Jun 12 12:09:29 walkingtree kubelet[1506]: I0612 12:09:29.240282    1506 kubelet_node_status.go:73] "Attempting to register node" node="walkingtree"
+Jun 12 12:09:29 walkingtree kubelet[1506]: E0612 12:09:29.240691    1506 kubelet_node_status.go:96] "Unable to register node with API server" err="Post \"https://192.168.1.91:6443/api/v1/nodes\": dial tcp 192.168.1.91:6443: connect: connection refused" node="walkingtree"
+Jun 12 12:09:29 walkingtree kubelet[1506]: W0612 12:09:29.244146    1506 reflector.go:547] k8s.io/client-go/informers/factory.go:160: failed to list *v1.CSIDriver: Get "https://192.168.1.91:6443/apis/storage.k8s.io/v1/csidrivers?limit=500&resourceVersion=0": dial tcp 192.168.1.91:6443: connect: connection refused
+Jun 12 12:09:29 walkingtree kubelet[1506]: E0612 12:09:29.244232    1506 reflector.go:150] k8s.io/client-go/informers/factory.go:160: Failed to watch *v1.CSIDriver: failed to list *v1.CSIDriver: Get "https://192.168.1.91:6443/apis/storage.k8s.io/v1/csidrivers?limit=500&resourceVersion=0": dial tcp 192.168.1.91:6443: connect: connection refused
